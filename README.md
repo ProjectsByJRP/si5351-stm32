@@ -1,2 +1,23 @@
 # si5351-stm32
 Port of Adafruit's si5351 driver to STM32 HAL
+
+Usage:
+  si5351_Init();
+  /* Set clock 0 to 16MHz
+   * 25mhz crystal osc * 32 == 800MHz
+   * 800MHz / 50 = 16Mhz
+   */
+  si5351_setupPLLInt(SI5351_PLL_A, 32);
+  si5351_setupMultisynthInt(0, SI5351_PLL_A, 50);
+  si5351_setupRdiv(0, SI5351_R_DIV_1);
+
+  /* Set clock 2 to 32.768KHz
+   * 25mhz crystal osc * (28 + (7012/390625)) = 700.448768
+   * 700.448768 / (1336 + (0 / 1)) = .524288
+   * .524288 / 16 = .032768 = 32.768KHz
+   */
+  si5351_setupPLL(SI5351_PLL_B, 28, 7012, 390625);
+  si5351_setupMultisynth(2, SI5351_PLL_B, 1336, 0, 1);
+  si5351_setupRdiv(2, SI5351_R_DIV_16);
+
+  si5351_enableOutputs(0xFF);
