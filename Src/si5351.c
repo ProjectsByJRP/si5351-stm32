@@ -45,7 +45,8 @@
 */
 /**************************************************************************/
 #include "main.h"
-#include "stm32f7xx_hal.h"
+// CHANGE THIS FOR YOUR CHIP
+#include "stm32f4xx_hal.h"
 #include "i2c.h"
 #include <math.h>
 #include <si5351.h>
