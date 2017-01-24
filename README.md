@@ -1,5 +1,8 @@
 # si5351-stm32
-Port of Adafruit's si5351 driver to STM32 HAL
+Port of Adafruit's si5351 driver to STM32 HAL<br>
+Change the #include on line 49 of si5351.c as needed. <br>
+#include "stm32f4xx.h"<br>
+Change that to your board f1, f3, f7 what have you. 
 
 Usage:
   si5351_Init();<br>
